@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth';
-import DiscordProvider from 'next-auth/providers/discord';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import { PrismaClient } from '@prisma/client';
+import NextAuth from 'next-auth';
+import DiscordProvider from 'next-auth/providers/discord';
 
 const prisma = new PrismaClient();
 
@@ -40,6 +40,7 @@ export const authOptions = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
+  secret: process.env.AUTH_SECRET,
   callbacks: {
     // async signIn({ account }: { account: Account }) {
     //   const guilds: Guild[] = (await fetchGuilds(account.access_token)) as unknown as Guild[];

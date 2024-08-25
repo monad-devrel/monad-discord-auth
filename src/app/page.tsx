@@ -1,19 +1,18 @@
-import React from "react";
-import { auth } from "@/services/auth";
-import HomeComponent from "./components/Home";
-import { getUser } from "@/services/db/api/user";
-import { fetchGuildMember, fetchGuilds } from "@/services/discord/api";
-import { GuildMember } from "@/services/discord/types";
+import { auth } from '@/services/auth';
+import { getUser } from '@/services/db/api/user';
+import { fetchGuildMember, fetchGuilds } from '@/services/discord/api';
+import { GuildMember } from '@/services/discord/types';
+import HomeComponent from './components/Home';
 
 export default async function Home() {
   const session = await auth();
-  console.log("session: ", JSON.stringify(session, null, 2));
+  console.log('session: ', JSON.stringify(session, null, 2));
   let user = null;
   let userIsPartOfMonad = false;
   let userGuildMember: GuildMember | undefined = undefined;
   try {
     const res = await getUser({
-      userId: session?.user?.id ?? "",
+      userId: session?.user?.id ?? '',
       include: { MonadRoles: true, accounts: true },
     });
     user = res;
@@ -21,19 +20,15 @@ export default async function Home() {
       const accessToken = user?.accounts?.[0]?.access_token;
       if (accessToken) {
         const userGuilds = await fetchGuilds(accessToken);
-        userIsPartOfMonad = !!userGuilds?.some(
-          (guild) => guild.id === process.env.MONAD_GUILD_ID,
-        );
+        userIsPartOfMonad = !!userGuilds?.some((guild) => guild.id === process.env.MONAD_GUILD_ID);
       }
       if (userIsPartOfMonad) {
-        userGuildMember = await fetchGuildMember(
-          user?.accounts?.[0]?.access_token ?? "",
-        );
-        console.log("userGuildMember: ", userGuildMember);
+        userGuildMember = await fetchGuildMember(user?.accounts?.[0]?.access_token ?? '');
+        console.log('userGuildMember: ', userGuildMember);
       }
     }
   } catch (error) {
-    console.error("Error fetching user: ", error);
+    console.error('Error fetching user: ', error);
   }
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

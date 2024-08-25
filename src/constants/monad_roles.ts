@@ -15,3 +15,14 @@ export const MONAD_ROLES = {
 };
 
 export const MONAD_DEFAULT_ROLE_NAME = 'pleb';
+
+export type Role = 'nads' | 'full_access' | 'nad-og' | 'running_hot' | 'mon' | 'mon2' | 'monartist';
+export const rolePriority: Role[] = [
+  'mon2',
+  'mon',
+  'nad-og',
+  'running_hot',
+  'monartist',
+  'nads',
+  'full_access',
+];

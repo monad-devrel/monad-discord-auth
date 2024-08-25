@@ -1,24 +1,22 @@
 'use client';
-import React from 'react';
-import { signIn, signOut } from 'next-auth/react';
-import { Session } from 'next-auth';
+import { MONAD_DEFAULT_ROLE_NAME, MONAD_ROLES, rolePriority } from '@/constants/monad_roles';
 import { GuildMember } from '@/services/discord/types';
-import { MONAD_DEFAULT_ROLE_NAME, MONAD_ROLES } from '@/constants/monad_roles';
+import { Session } from 'next-auth';
+import { signIn, signOut } from 'next-auth/react';
 
-export default function HomeComponent({
-  session,
-  userIsPartOfMonad,
-  userGuildMember,
-}: {
+type HomeProps = {
   session: Session | null;
   userIsPartOfMonad: boolean;
   userGuildMember: GuildMember | undefined;
-}) {
-  const roles = userGuildMember?.roles;
+};
+
+export default function HomeComponent({ session, userIsPartOfMonad, userGuildMember }: HomeProps) {
+  const roles = userGuildMember?.roles || [];
   let roleNames = roles?.map((role) => {
     const potentialMonadRole = MONAD_ROLES[role as keyof typeof MONAD_ROLES];
     return potentialMonadRole ? potentialMonadRole : MONAD_DEFAULT_ROLE_NAME;
   });
+
   // if there's at least one role that's not the default role, we want to only show the roles that are not the default role
   const hasNonDefaultRole = roleNames?.some((role) => role !== MONAD_DEFAULT_ROLE_NAME);
   if (hasNonDefaultRole) {
@@ -26,6 +24,19 @@ export default function HomeComponent({
   } else {
     roleNames = [MONAD_DEFAULT_ROLE_NAME];
   }
+
+  // Retrieves a personalized message based on the user's roles, if the user is part of the Monad group.
+  const getContentFromRole = () => {
+    if (userIsPartOfMonad) {
+      const role = rolePriority.find((role) => roleNames.includes(role));
+      if (role) {
+        return `You're all set, looks like you're indeed a ${role}`;
+      }
+    }
+    return "Oops, looks like you're not a NAD yet :(";
+  };
+  const roleContent = getContentFromRole();
+
   return (
     <div className="z-10 w-full max-w-5xl items-center justify-center font-mono text-sm lg:flex lg:flex-col">
       {session ? (
@@ -34,16 +45,10 @@ export default function HomeComponent({
           <br />
           <button onClick={() => signOut()}>Sign out</button>
           <br />
-          <h2>
-            {userIsPartOfMonad
-              ? "You're all set, looks like you're indeed a Nad"
-              : "Oops, looks like you're not a NAD yet :("}
-          </h2>
+          <h2>{roleContent}</h2>
           <br />
           {userIsPartOfMonad && (
-            <>
-              <div>{roleNames?.map((roleName) => <div key={roleName}>{roleName}</div>)}</div>
-            </>
+            <div>{roleNames?.map((roleName) => <div key={roleName}>{roleName}</div>)}</div>
           )}
         </>
       ) : (
