@@ -1,5 +1,5 @@
 'use client';
-import { MONAD_DEFAULT_ROLE_NAME, MONAD_ROLES, rolePriority } from '@/constants/monad_roles';
+import { MONAD_DEFAULT_ROLE_NAME, MONAD_ROLES } from '@/constants/monad_roles';
 import { GuildMember } from '@/services/discord/types';
 import { Session } from 'next-auth';
 import { signIn, signOut } from 'next-auth/react';
@@ -27,13 +27,13 @@ export default function HomeComponent({ session, userIsPartOfMonad, userGuildMem
 
   // Retrieves a personalized message based on the user's roles, if the user is part of the Monad group.
   const getContentFromRole = () => {
+    const successText = "You're all set, looks like you're indeed a ";
     if (userIsPartOfMonad) {
-      const role = rolePriority.find((role) => roleNames.includes(role));
-      if (role) {
-        return `You're all set, looks like you're indeed a ${role}`;
-      }
+      if (roleNames.includes('nads')) return `${successText} Nad`;
+      else if (roleNames.includes('full_access')) return `${successText} Full access`;
+      else return `Oh! Looks like you're still a newbies`;
     }
-    return "Oops, looks like you're not a NAD yet :(";
+    return "Oops, looks like you're not a discord member yet :(";
   };
   const roleContent = getContentFromRole();
 
