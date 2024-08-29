@@ -30,8 +30,8 @@ export default function HomeComponent({ session, userIsPartOfMonad, userGuildMem
     const successText = "You're all set, looks like you're indeed a ";
     if (userIsPartOfMonad) {
       if (roleNames.includes('nads')) return `${successText} Nad`;
-      else if (roleNames.includes('full_access')) return `${successText} Full access`;
-      else return `Oh! Looks like you're still a newbies`;
+      else if (roleNames.includes('full_access')) return `${successText} full access`;
+      else return `Oh! Looks like you're still a newbie`;
     }
     return "Oops, looks like you're not a discord member yet :(";
   };
