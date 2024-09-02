@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Monad Discord Auth" src="https://i.imgur.com/GQhIE2g.jpeg">
+    <img alt="Monad Discord Auth" src="https://github.com/user-attachments/assets/32f470e7-ca9f-4610-a28b-0d630456dce2">
 </p>
 
 <p align="center">
