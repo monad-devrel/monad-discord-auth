@@ -6,9 +6,6 @@
     <a href="https://discord.gg/T7KKNT4cng">
         <img src="https://img.shields.io/badge/Discord-Monad%20Developers-7289DA?logo=discord&logoColor=white" alt="Discord">
     </a>
-    <a href="https://x.com/monad_xyz">
-        <img src="https://img.shields.io/twitter/follow/Monad?style=social" alt="Twitter Follow">
-    </a>
     <a href="https://github.com/monad-devrel/monad-discord-auth">
         <img src="https://img.shields.io/github/contributors/monad-devrel/monad-discord-auth" alt="GitHub contributors">
     </a>
