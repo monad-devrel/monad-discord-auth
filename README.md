@@ -166,4 +166,4 @@ For detailed guidelines, refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## 9. License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
