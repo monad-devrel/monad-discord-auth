@@ -46,11 +46,8 @@
 Ensure that your system meets the following requirements:
 
 - **Node.js**: Ensure you have Node.js installed (version 14 or later is recommended). You can download and install Node.js from the official website [here](https://nodejs.org/en/).
-- **pnpm** is a package manager that can be installed in various ways. One method is a global installation via npm, which you can do by entering the following in your terminal:
-```bash
-npm install -g pnpm
-  ```
-To explore other installation methods and choose the one that best suits your system and needs, visit the official pnpm installation page: [pnpm Installation](https://pnpm.io/installation).
+
+- **pnpm** is a package manager that can be installed in various ways. To explore the different installation methods and choose the one that best suits your system and needs, visit the official pnpm installation page: [pnpm Installation](https://pnpm.io/installation).
 
 - **PostgreSQL**: Version 13 or later, for database management. You can follow the instructions to set up a local [PostgreSQL](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database).
 
