@@ -1,0 +1,37 @@
+{
+  "name": "Monad Discord Auth Starter",
+  "short_name": "Monad Discord Auth",
+  "description": "Starter project for Discord authentication for Monad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#200052",
+  "theme_color": "#836ef9",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icons/salmonad-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/salmonad-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/salmonad-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/salmonad-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/salmonad-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
