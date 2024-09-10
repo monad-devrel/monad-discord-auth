@@ -53,7 +53,7 @@ export default function HomeComponent({ session, userIsPartOfMonad, userGuildMem
         </>
       ) : (
         <>
-          <button onClick={() => signIn()}>Authenticate  Your&apos;re Access Level</button>
+          <button onClick={() => signIn()}>Check your access level</button>
         </>
       )}
     </div>
