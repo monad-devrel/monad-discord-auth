@@ -11,3 +11,7 @@ MONAD_GUILD_ID=MONAD_GUILD_ID_here
 
 # POSTGRES
 DATABASE_URL=your_postgres_url_here
+
+# SUPABASE (Optional)
+# Only needed if you're using Supabase instead of a local Postgres instance
+DIRECT_URL=your_supabase_direct_url_here
